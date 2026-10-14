@@ -31,8 +31,8 @@ export const mainNav = [
 
 // Mock numbers for the stats strip — update as the company grows.
 export const stats = [
-  { value: 25, suffix: "+", label: "Schools & businesses served" },
-  { value: 40, suffix: "+", label: "Projects delivered" },
-  { value: 15000, suffix: "+", label: "Students managed on our LMS" },
+  { value: 5, suffix: "+", label: "Schools & businesses served" },
+  { value: 10, suffix: "+", label: "Projects delivered" },
+  { value: 1500, suffix: "+", label: "Students managed on our LMS" },
   { value: 24, suffix: "/7", label: "Local support" },
 ] as const

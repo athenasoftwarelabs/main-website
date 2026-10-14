@@ -35,5 +35,7 @@ export const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com",
     initials: "SK",
     bio: "Sanjog connects Athena with schools and businesses, understanding their needs and helping them get the most out of our solutions.",
+    // Tightly cropped photo: zoom out from the bottom-right so his head sits level with the others
+    photo: { src: "/images/sanjog_karki.png", focus: "100% 100%", zoom: 0.88 },
   },
 ]
