@@ -43,3 +43,5 @@ next-env.d.ts
 # Claude Code and agents
 /.claude/
 /AGENTS.md
+# allow the env template
+!.env.example

@@ -18,10 +18,27 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { submitContact } from "@/app/contact/actions"
-import { contactSchema, serviceOptions, type ContactValues } from "@/lib/contact-schema"
+import {
+  contactSchema,
+  serviceOptions,
+  type ContactResponse,
+  type ContactValues,
+} from "@/lib/contact-schema"
 
 const inputClass = "h-11 rounded-xl bg-background px-3.5 text-[0.95rem] md:text-[0.95rem]"
+
+async function sendContact(values: ContactValues, website: string): Promise<ContactResponse> {
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...values, website }),
+    })
+    return (await res.json()) as ContactResponse
+  } catch {
+    return { ok: false, message: "Network error. Please check your connection and try again." }
+  }
+}
 
 // Reads ?service=<id> (set by "Discuss your project" links) to preselect a service.
 export function ContactFormWithParams() {
@@ -48,9 +65,12 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
     mode: "onTouched",
   })
 
-  const onSubmit = (values: ContactValues) => {
+  const onSubmit = (values: ContactValues, event?: React.BaseSyntheticEvent) => {
+    // The honeypot isn't a form-library field, so read it straight from the submitted form
+    const formEl = event?.target instanceof HTMLFormElement ? event.target : null
+    const website = String((formEl && new FormData(formEl).get("website")) ?? "")
     startTransition(async () => {
-      const result = await submitContact(values)
+      const result = await sendContact(values, website)
       if (result.ok) {
         toast.success("Message sent!", {
           description: "Thanks for reaching out. We'll get back to you within one business day.",
@@ -105,6 +125,11 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
             onSubmit={form.handleSubmit(onSubmit)}
             noValidate
           >
+            {/* Spam honeypot: hidden from people and screen readers; bots that fill it are ignored by the API */}
+            <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+              <label htmlFor="website">Website</label>
+              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
             <h2 className="text-2xl font-bold">Send us a message</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Fill in the form and we&apos;ll get back to you within one business day.

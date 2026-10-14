@@ -8,7 +8,7 @@ export const serviceOptions = [
 
 const serviceIds = serviceOptions.map((o) => o.value) as [string, ...string[]]
 
-// Shared by the client form and the server action so both validate identically
+// Shared by the client form and the /api/contact route so both validate identically
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your full name.").max(80),
   email: z.email("Please enter a valid email address.").trim(),
@@ -27,3 +27,8 @@ export const contactSchema = z.object({
 })
 
 export type ContactValues = z.infer<typeof contactSchema>
+
+/** JSON body returned by POST /api/contact */
+export type ContactResponse =
+  | { ok: true }
+  | { ok: false; message: string; fieldErrors?: Partial<Record<keyof ContactValues, string[]>> }
