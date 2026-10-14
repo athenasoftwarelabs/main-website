@@ -41,5 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Claude Code and agents
-.claude/*
-AGENTS.md
+/.claude/
+/AGENTS.md
