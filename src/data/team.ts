@@ -11,7 +11,7 @@ export type TeamMember = {
   photo?: { src: string; focus: string; zoom: number }
 }
 
-// Bios are placeholders — edit freely.
+// Bios are placeholders - edit freely.
 export const team: TeamMember[] = [
   {
     name: "Aayush Dhakal",

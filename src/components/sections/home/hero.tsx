@@ -22,7 +22,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:gap-10 lg:px-8">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <div className={enter}>
-            <Eyebrow>Software · LMS · Apps — Made in Nepal</Eyebrow>
+            <Eyebrow>Software · LMS · Apps - Made in Nepal</Eyebrow>
           </div>
           <h1
             className={`${enter} mt-6 text-[2.6rem] leading-[1.05] font-extrabold text-balance delay-100 sm:text-6xl lg:text-[4.25rem]`}

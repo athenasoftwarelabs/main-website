@@ -24,7 +24,7 @@ export function SiteFooter() {
       <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex items-center gap-3" aria-label="Athena Software Labs — home">
+            <Link href="/" className="inline-flex items-center gap-3" aria-label="Athena Software Labs - home">
               <Image src="/brand/logo-mark.svg" alt="" width={812} height={933} className="h-12 w-auto" />
               <Image src="/brand/wordmark-light.svg" alt="Athena Software Labs" width={763} height={175} className="h-7 w-auto dark:hidden" />
               <Image src="/brand/wordmark-dark.svg" alt="Athena Software Labs" width={763} height={175} className="hidden h-7 w-auto dark:block" />

@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Athena Software Labs — home"
+      aria-label="Athena Software Labs - home"
       className={cn("flex items-center gap-2.5 rounded-md", className)}
     >
       <Image

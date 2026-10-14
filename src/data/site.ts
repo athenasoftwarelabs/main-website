@@ -1,4 +1,4 @@
-// Central company info. The email is a placeholder — replace before launch.
+// Central company info.
 export const siteConfig = {
   name: "Athena Software Labs",
   shortName: "Athena",
@@ -29,7 +29,7 @@ export const mainNav = [
   { title: "Contact", href: "/contact" },
 ] as const
 
-// Mock numbers for the stats strip — update as the company grows.
+// Numbers for the stats strip - update as the company grows.
 export const stats = [
   { value: 5, suffix: "+", label: "Schools & businesses served" },
   { value: 10, suffix: "+", label: "Projects delivered" },
