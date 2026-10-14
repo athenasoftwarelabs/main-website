@@ -11,7 +11,7 @@ export const siteConfig = {
     phone: "+977 9768643712",
     phoneHref: "tel:+9779768643712",
     address: "Urlabari, Koshi Province, Nepal",
-    hours: "Sun – Fri, 10:00 AM – 6:00 PM",
+    hours: "Sun - Fri, 9:00 AM - 5:00 PM",
     mapEmbed:
       "https://www.openstreetmap.org/export/embed.html?bbox=87.59%2C26.64%2C87.65%2C26.69&layer=mapnik&marker=26.6655%2C87.6200",
   },
