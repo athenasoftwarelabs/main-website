@@ -15,7 +15,7 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Aayush Dhakal",
-    role: "Chief Executive Officer",
+    role: "Founder and Director",
     linkedin: "https://www.linkedin.com/in/aayush-dhakal-max",
     initials: "AD",
     bio: "Founder of Athena Software Labs. Aayush leads the company's vision of bringing modern, affordable digital solutions to schools and businesses across Nepal.",
