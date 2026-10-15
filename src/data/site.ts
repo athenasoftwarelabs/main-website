@@ -13,7 +13,7 @@ export const siteConfig = {
     address: "Urlabari, Koshi Province, Nepal",
     hours: "Sun - Fri, 9:00 AM - 5:00 PM",
     mapEmbed:
-      "https://www.openstreetmap.org/export/embed.html?bbox=87.59%2C26.64%2C87.65%2C26.69&layer=mapnik&marker=26.6655%2C87.6200",
+      "https://www.openstreetmap.org/export/embed.html?bbox=87.59%2C26.64%2C87.65%2C26.69&layer=mapnik&marker=26.661713%2C87.633841",
   },
   socials: [
     { label: "Facebook", href: "https://facebook.com" },

@@ -23,15 +23,15 @@ export const team: TeamMember[] = [
   },
   {
     name: "Bibek Bhattarai",
-    role: "Chief Technology Officer",
+    role: "Software Engineer",
     linkedin: "https://www.linkedin.com/in/xspark/",
     initials: "BB",
-    bio: "Bibek leads engineering and architecture at Athena, making sure every product we ship is secure, scalable and built to last.",
+    bio: "Bibek is a software engineer at Athena, contributing to the development and testing of our school management products.",
     photo: { src: "/images/bibek_bhattarai_pic.png", focus: "72% 100%", zoom: 1 },
   },
   {
     name: "Sanjog Karki",
-    role: "Chief Marketing Officer",
+    role: "Marketing Associate",
     linkedin: "https://www.linkedin.com",
     initials: "SK",
     bio: "Sanjog connects Athena with schools and businesses, understanding their needs and helping them get the most out of our solutions.",
