@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: "Athena Software Labs",
   shortName: "Athena",
-  url: "https://athenasoftwarelabs.com",
+  url: "https://www.athenasoftwarelabs.com",
   tagline: "Digital solutions for Nepal's schools & businesses",
   description:
     "Athena Software Labs is a Nepal-based IT company building school LMS, billing systems, websites, e-commerce, and Android & iOS apps for schools, hotels, restaurants and growing businesses.",
