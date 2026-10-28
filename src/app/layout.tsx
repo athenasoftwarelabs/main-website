@@ -4,8 +4,10 @@ import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { MotionProvider } from "@/components/providers/motion-provider"
 import { ThemeProvider, themeInitScript } from "@/components/providers/theme-provider"
+import { JsonLd } from "@/components/seo/json-ld"
 import { Toaster } from "@/components/ui/sonner"
 import { siteConfig } from "@/data/site"
+import { organizationSchema, websiteSchema } from "@/lib/seo"
 import "./globals.css"
 
 const inter = Inter({
@@ -27,21 +29,44 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "technology",
   keywords: [
-    "IT company Nepal",
-    "software company Urlabari",
-    "IT company Koshi Province",
+    "software company in Nepal",
+    "IT company in Nepal",
     "school LMS Nepal",
-    "school management software",
+    "school management software Nepal",
     "billing software Nepal",
+    "POS system Nepal",
     "mobile app development Nepal",
     "website development Nepal",
-    "e-commerce Nepal",
+    "IT company Urlabari",
+    "software company Koshi Province",
   ],
+  // Explicitly allow indexing, with large image previews and full snippets in search results
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // Set GOOGLE_SITE_VERIFICATION / BING_SITE_VERIFICATION to verify the site in Search Console / Bing Webmaster Tools
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: "/",
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -60,22 +85,6 @@ export const viewport: Viewport = {
   ],
 }
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/brand/logo-mark.svg`,
-  email: siteConfig.contact.email,
-  telephone: siteConfig.contact.phone,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Urlabari",
-    addressRegion: "Koshi Province",
-    addressCountry: "NP",
-  },
-}
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -88,12 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <ThemeProvider>
           <MotionProvider>
             <a

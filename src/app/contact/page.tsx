@@ -1,20 +1,28 @@
-import type { Metadata } from "next"
 import { Suspense } from "react"
 import { Reveal } from "@/components/motion/reveal"
 import { PageHero } from "@/components/shared/page-hero"
 import { ContactForm, ContactFormWithParams } from "@/components/sections/contact/contact-form"
 import { ContactInfo } from "@/components/sections/contact/contact-info"
+import { JsonLd } from "@/components/seo/json-ld"
 import { siteConfig } from "@/data/site"
+import { breadcrumbSchema, pageMetadata, webPageSchema } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Get in touch with Athena Software Labs for a free consultation on school LMS, software, mobile apps, websites and e-commerce in Nepal.",
-}
+const title = "Contact Us for a Free Consultation"
+const description =
+  "Contact Athena Software Labs in Urlabari, Nepal for a free consultation on school LMS, billing software, websites and apps. Call +977 9768643712."
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]
+
+export const metadata = pageMetadata({ title, description, path: "/contact" })
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={[webPageSchema({ type: "ContactPage", path: "/contact", name: title, description }), breadcrumbSchema(crumbs)]}
+      />
       <PageHero
         eyebrow="Contact us"
         title={

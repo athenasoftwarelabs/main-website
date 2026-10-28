@@ -1,9 +1,15 @@
 import type { MetadataRoute } from "next"
-import { siteConfig } from "@/data/site"
+import { SITE_URL } from "@/lib/seo"
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      // The contact form endpoint has nothing to index
+      disallow: ["/api/"],
+    },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

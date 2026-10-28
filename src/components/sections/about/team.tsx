@@ -10,7 +10,7 @@ export function Team() {
   const LinkedIn = socialIcons.LinkedIn
 
   return (
-    <section className="bg-section px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <section id="team" className="scroll-mt-24 bg-section px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Our team"

@@ -14,6 +14,16 @@ export const siteConfig = {
     hours: "Sun - Fri, 9:00 AM - 5:00 PM",
     mapEmbed:
       "https://www.openstreetmap.org/export/embed.html?bbox=87.59%2C26.64%2C87.65%2C26.69&layer=mapnik&marker=26.661713%2C87.633841",
+    // Machine-readable versions of the details above, used in schema markup for search engines
+    locality: "Urlabari",
+    region: "Koshi Province",
+    countryCode: "NP",
+    geo: { latitude: 26.661713, longitude: 87.633841 },
+    openingHours: {
+      days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
   },
   socials: [
     { label: "Facebook", href: "https://facebook.com" },
@@ -26,6 +36,7 @@ export const mainNav = [
   { title: "Home", href: "/" },
   { title: "Services", href: "/services" },
   { title: "About", href: "/about" },
+  { title: "Blog", href: "/blog" },
   { title: "Contact", href: "/contact" },
 ] as const
 

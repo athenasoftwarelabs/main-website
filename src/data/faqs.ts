@@ -1,7 +1,7 @@
 export const faqs = [
   {
     q: "How long does it take to set up the school LMS?",
-    a: "Most schools are up and running within 1–2 weeks. We handle data migration, configuration and staff training so your team can start using it right away.",
+    a: "Most schools are up and running within 1 to 2 weeks. We handle data migration, configuration and staff training so your team can start using it right away.",
   },
   {
     q: "Does the LMS work on mobile phones?",

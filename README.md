@@ -1,4 +1,4 @@
-# Athena Software Labs — Website
+# Athena Software Labs Website
 
 Company website for Athena Software Labs, an IT company in Nepal. It has four pages: **Home**, **Services**, **About** and **Contact**.
 
@@ -23,10 +23,32 @@ All copy lives in `src/data/`, so you can change text without touching component
 | `src/data/site.ts` | Company name, contact details (email and social links are **placeholders**), nav, home-page stats |
 | `src/data/services.ts` | Services list (cards, Services page, footer, contact-form dropdown) |
 | `src/data/lms-features.ts` | LMS tabs on Home and the module grid on Services |
-| `src/data/team.ts` | Team members on About |
+| `src/data/team.ts` | Team members on About (also used as blog authors) |
 | `src/data/faqs.ts` | FAQ on Services |
+| `src/content/blog/posts/*.ts` | Blog articles |
 
-The brand assets are in `public/brand/` (logo mark plus light and dark wordmarks). The favicon is `src/app/icon.svg`.
+The brand assets are in `public/brand/` (logo mark, light and dark wordmarks, and PNG icons). The favicon is `src/app/icon.svg`.
+
+## Blog
+
+Articles live in `src/content/blog/posts/`, one file per post, written as structured blocks (paragraphs, headings, lists, tables, checklists, callouts, a call-to-action and FAQs). Inline text supports `**bold**` and `[links](/services#school-lms)`.
+
+To add a post:
+
+1. Copy an existing file in `src/content/blog/posts/` and change the `slug`, text, dates and `author` (must match a name in `src/data/team.ts`).
+2. Register it in the `posts` array in `src/content/blog/index.ts`.
+
+From that one file the site generates the article page, its share image, the table of contents, reading time, the sitemap entry, `BlogPosting` and `FAQPage` schema, and the `llms-full.txt` text. Keep the `seoTitle` under about 60 characters and the `description` between 140 and 160.
+
+## SEO
+
+- **Metadata:** every page sets a unique title, meta description, canonical URL, Open Graph and Twitter tags through `pageMetadata()` in `src/lib/seo.ts`.
+- **Schema markup (JSON-LD):** Organization / LocalBusiness and WebSite on every page, plus breadcrumbs, Service list, FAQPage, AboutPage with Person entries, ContactPage, Blog and BlogPosting where relevant. The builders are in `src/lib/seo.ts`.
+- **Generated files:** `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/llms.txt` and `/llms-full.txt` are all built from the content above, so they stay in sync automatically.
+- **Share images:** branded 1200x630 images are generated in `src/app/**/opengraph-image.tsx` (site, blog and each article).
+- **Search Console:** set `GOOGLE_SITE_VERIFICATION` (and optionally `BING_SITE_VERIFICATION`) in your hosting environment, then submit `https://www.athenasoftwarelabs.com/sitemap.xml`.
+- **Social profiles:** once the real Facebook, LinkedIn and Instagram URLs are in `src/data/site.ts`, they are added to the schema (`sameAs`) automatically. Bare placeholders like `https://facebook.com` are skipped.
+- When you change page content, bump `PAGES_UPDATED` in `src/lib/seo.ts` so the sitemap shows the new date.
 
 ## Theme & colors
 
@@ -61,13 +83,18 @@ Until the variables are set, the form shows visitors a friendly "call or email u
 
 ```
 src/
-  app/                  routes (page.tsx, about/, services/, contact/), api/contact route, layout, sitemap, robots
+  app/                  routes (page.tsx, about/, services/, blog/, contact/), api/contact route, layout,
+                        sitemap, robots, manifest, llms.txt, share images
   components/
+    blog/               article body, cards, cover art, table of contents, author, share links
     layout/             header, mobile nav, footer, logo, theme toggle
+    seo/                JSON-LD renderer
     sections/<page>/    page sections
     shared/             section heading, page hero, CTA band, cards, backgrounds
     motion/             Reveal, Stagger, AnimatedCounter (respect prefers-reduced-motion)
     ui/                 shadcn/ui components
+  content/blog/         blog articles and helpers
   data/                 editable content
-  lib/                  utils, contact schema, Google Sheets client
+  lib/                  utils, SEO and schema builders, share image renderer, llms.txt, contact schema, Google Sheets client
+  proxy.ts              returns a real 404 for unknown blog URLs
 ```
